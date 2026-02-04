@@ -1,0 +1,66 @@
+.unified-analyzer {
+  margin: 1rem 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1rem;
+}
+
+.analyze-button {
+  padding: 0.875rem 2.5rem;
+  font-size: 1.1rem;
+  font-weight: 600;
+  color: white;
+  background: linear-gradient(135deg, #667eea 0%, #10b981 100%);
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 12px rgba(102, 126, 234, 0.3);
+}
+
+.analyze-button:hover:not(:disabled) {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 16px rgba(102, 126, 234, 0.4);
+}
+
+.analyze-button:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+  transform: none;
+}
+
+.analyzer-message {
+  padding: 0.75rem 1.5rem;
+  border-radius: 8px;
+  font-size: 0.95rem;
+  font-weight: 500;
+  text-align: center;
+  max-width: 500px;
+}
+
+.analyzer-message.success {
+  background: #d1fae5;
+  color: #065f46;
+  border: 1px solid #10b981;
+}
+
+.analyzer-message.error {
+  background: #fee;
+  color: #c33;
+  border: 1px solid #fcc;
+}
+
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .analyze-button {
+    font-size: 1rem;
+    padding: 0.75rem 2rem;
+  }
+
+  .analyzer-message {
+    font-size: 0.9rem;
+    padding: 0.5rem 1rem;
+  }
+}
