@@ -15,11 +15,6 @@ function HomePage() {
       <div className="home-header">
         <h1>📊 ESG News Analyzer</h1>
         <p className="subtitle">Track Environmental, Social & Governance News</p>
-        <div className="header-buttons">
-          <button onClick={() => navigate('/dashboard', { state: { company: 'Tesla' } })} className="demo-button">
-            📊 View Demo Dashboard
-          </button>
-        </div>
       </div>
 
       <CompanySearch onSearchSuccess={handleSearchSuccess} />
