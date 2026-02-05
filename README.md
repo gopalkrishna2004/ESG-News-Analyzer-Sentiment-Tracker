@@ -4,6 +4,7 @@ A full-stack web application that aggregates, analyzes, and visualizes ESG (Envi
 
 ## 📋 Table of Contents
 
+- [Demo Video](#-demo-video)
 - [Features](#-features)
 - [Tech Stack](#-tech-stack)
 - [Project Structure](#-project-structure)
@@ -15,6 +16,22 @@ A full-stack web application that aggregates, analyzes, and visualizes ESG (Envi
 - [API Documentation](#-api-documentation)
 - [Development](#-development)
 - [License](#-license)
+
+## 🎥 Demo Video
+
+Watch the full application demo to see all features in action:
+
+https://github.com/user-attachments/assets/demo.mp4
+
+**What's shown in the demo:**
+- 🔍 Company search and news aggregation
+- 🤖 AI-powered sentiment analysis
+- 📊 ESG categorization (Environmental, Social, Governance)
+- 📈 Interactive analytics dashboard
+- 💡 AI-generated summaries of key ESG issues
+- 🎨 Dark theme UI with responsive design
+
+> **Note:** The demo showcases the complete workflow from searching for a company to analyzing ESG news and viewing comprehensive insights on the dashboard.
 
 ## ✨ Features
 
@@ -463,21 +480,6 @@ cd frontend
 npm test
 ```
 
-### Code Style
-
-- Follow standard JavaScript/React conventions
-- Use meaningful variable and function names
-- Add comments for complex logic
-- Keep components modular and reusable
-
-### Adding New Features
-
-1. Create feature branch: `git checkout -b feature/your-feature`
-2. Implement changes in appropriate service/component
-3. Test thoroughly
-4. Commit with descriptive message
-5. Create pull request
-
 ## 🤝 Contributing
 
 Contributions are welcome! Please follow these steps:
@@ -487,34 +489,6 @@ Contributions are welcome! Please follow these steps:
 3. Commit your changes
 4. Push to the branch
 5. Open a pull request
-
-## 📄 License
-
-This project is licensed under the ISC License.
-
-## 🐛 Troubleshooting
-
-### Common Issues
-
-**MongoDB Connection Error:**
-- Ensure MongoDB is running: `mongod`
-- Check connection string in `.env`
-
-**API Key Errors:**
-- Verify API keys are valid and not expired
-- Check rate limits on NewsAPI and Gemini
-
-**Port Already in Use:**
-```bash
-# Find process using port 5000
-netstat -ano | findstr :5000
-# Kill process (Windows)
-taskkill /PID <PID> /F
-```
-
-**CORS Issues:**
-- Verify proxy setting in frontend `package.json`
-- Check CORS middleware in backend
 
 ## 📧 Contact
 
