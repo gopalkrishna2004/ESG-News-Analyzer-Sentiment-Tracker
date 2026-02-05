@@ -54,17 +54,17 @@ https://github.com/user-attachments/assets/demo.mp4
 ## 🛠 Tech Stack
 
 ### Frontend
-- **React 18.2** - UI framework
-- **React Router v7** - Client-side routing
+- **React** - UI framework
+- **React Router** - Client-side routing
 - **Axios** - HTTP client for API requests
 - **Chart.js & Recharts** - Data visualization
 - **CSS3** - Styling
 
 ### Backend
 - **Node.js** - Runtime environment
-- **Express.js 4.18** - Web framework
+- **Express.js** - Web framework
 - **MongoDB** - Database
-- **Mongoose 8.0** - ODM for MongoDB
+- **Mongoose** - ODM for MongoDB
 
 ### APIs & AI Services
 - **NewsAPI** - News aggregation
@@ -130,9 +130,9 @@ News/
 
 Before running this application, ensure you have the following installed:
 
-- **Node.js** (v16 or higher) - [Download](https://nodejs.org/)
-- **MongoDB** (v6 or higher) - [Download](https://www.mongodb.com/try/download/community)
-- **npm** (comes with Node.js) or **yarn**
+- **Node.js** - [Download](https://nodejs.org/)
+- **MongoDB**- [Download](https://www.mongodb.com/try/download/community)
+- **npm**
 
 ### API Keys Required
 
