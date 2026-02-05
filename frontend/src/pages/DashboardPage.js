@@ -25,6 +25,8 @@ function DashboardPage() {
   const [sentimentTrends, setSentimentTrends] = useState([]);
   const [esgDistribution, setEsgDistribution] = useState([]);
   const [timeline, setTimeline] = useState([]);
+  const [aiSummary, setAiSummary] = useState(null);
+  const [summaryLoading, setSummaryLoading] = useState(false);
 
   useEffect(() => {
     if (location.state?.company) {
@@ -49,10 +51,27 @@ function DashboardPage() {
       if (trendsRes.data.success) setSentimentTrends(trendsRes.data.trends);
       if (distributionRes.data.success) setEsgDistribution(distributionRes.data.distribution);
       if (timelineRes.data.success) setTimeline(timelineRes.data.timeline);
+      
+      // Fetch AI Summary separately to avoid blocking other data
+      fetchAISummary(companyName);
     } catch (error) {
       console.error('Failed to fetch dashboard data:', error);
     } finally {
       setLoading(false);
+    }
+  };
+
+  const fetchAISummary = async (companyName) => {
+    setSummaryLoading(true);
+    try {
+      const response = await axios.get(`/api/summary/${encodeURIComponent(companyName)}`);
+      if (response.data.success) {
+        setAiSummary(response.data);
+      }
+    } catch (error) {
+      console.error('Failed to fetch AI summary:', error);
+    } finally {
+      setSummaryLoading(false);
     }
   };
 
@@ -135,6 +154,93 @@ function DashboardPage() {
             </div>
           </div>
         )}
+
+        {/* AI Summary Section */}
+        {summaryLoading ? (
+          <div className="summary-section">
+            <div className="summary-header">
+              <h3>AI-Generated ESG Summary</h3>
+            </div>
+            <div className="summary-loading">
+              <div className="loading-spinner"></div>
+              <p>Generating AI summary...</p>
+            </div>
+          </div>
+        ) : aiSummary?.summary ? (
+          <div className="summary-section">
+            <div className="summary-header">
+              <h3>AI-Generated ESG Summary</h3>
+              <span className="summary-timestamp">
+                Generated {new Date(aiSummary.generatedAt).toLocaleTimeString()}
+              </span>
+            </div>
+
+            {/* Overall Summary */}
+            <div className="summary-overview">
+              <p>{aiSummary.summary.overallSummary}</p>
+            </div>
+
+            {/* Key Concerns and Highlights */}
+            <div className="summary-grid">
+              {/* Concerns */}
+              {aiSummary.summary.keyConcerns && aiSummary.summary.keyConcerns.length > 0 && (
+                <div className="summary-box concerns">
+                  <h4>Key Concerns</h4>
+                  <ul>
+                    {aiSummary.summary.keyConcerns.map((concern, index) => (
+                      <li key={index}>{concern}</li>
+                    ))}
+                  </ul>
+                </div>
+              )}
+
+              {/* Positive Highlights */}
+              {aiSummary.summary.positiveHighlights && aiSummary.summary.positiveHighlights.length > 0 && (
+                <div className="summary-box highlights">
+                  <h4>Positive Highlights</h4>
+                  <ul>
+                    {aiSummary.summary.positiveHighlights.map((highlight, index) => (
+                      <li key={index}>{highlight}</li>
+                    ))}
+                  </ul>
+                </div>
+              )}
+            </div>
+
+            {/* Trending Topics */}
+            {aiSummary.summary.trendingTopics && aiSummary.summary.trendingTopics.length > 0 && (
+              <div className="trending-topics">
+                <h4>Trending ESG Topics</h4>
+                <div className="topics-grid">
+                  {aiSummary.summary.trendingTopics.map((topic, index) => (
+                    <div key={index} className={`topic-card ${topic.category.toLowerCase()}`}>
+                      <div className="topic-header">
+                        <span className="topic-name">{topic.topic}</span>
+                        <span className={`topic-importance ${topic.importance.toLowerCase()}`}>
+                          {topic.importance}
+                        </span>
+                      </div>
+                      <div className="topic-meta">
+                        <span className="topic-category">{topic.category}</span>
+                        <span className={`topic-sentiment ${topic.sentiment.toLowerCase()}`}>
+                          {topic.sentiment}
+                        </span>
+                      </div>
+                    </div>
+                  ))}
+                </div>
+              </div>
+            )}
+
+            {/* Recommendations */}
+            {aiSummary.summary.recommendations && (
+              <div className="summary-recommendations">
+                <h4>Recommendations</h4>
+                <p>{aiSummary.summary.recommendations}</p>
+              </div>
+            )}
+          </div>
+        ) : null}
 
         {/* Charts Section */}
         <div className="charts-section">
