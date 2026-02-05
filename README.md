@@ -1,288 +1,525 @@
-# 📊 ESG News Analyzer & Sentiment Tracker
+# ESG News Analyzer & Sentiment Tracker
 
-A full-stack web application that aggregates ESG (Environmental, Social, Governance) news about companies and uses AI to analyze sentiment and categorize issues.
+A full-stack web application that aggregates, analyzes, and visualizes ESG (Environmental, Social, and Governance) news articles for companies. The application provides real-time sentiment analysis, ESG categorization, and AI-powered summarization using Google's Gemini AI.
 
-## 🚀 Features
+## 📋 Table of Contents
 
-### Feature 1: Company Search & News Aggregation ✅
-- Search for companies by name
-- Fetch ESG-related news articles from NewsAPI
-- Display news articles with metadata
-- Store news data in MongoDB database
-- View stored articles or fetch new ones
-- Quick search with sample companies (Tesla, Amazon, Microsoft, etc.)
+- [Features](#-features)
+- [Tech Stack](#-tech-stack)
+- [Project Structure](#-project-structure)
+- [Prerequisites](#-prerequisites)
+- [Installation](#-installation)
+- [Configuration](#-configuration)
+- [Running the Application](#-running-the-application)
+- [Workflow & Architecture](#-workflow--architecture)
+- [API Documentation](#-api-documentation)
+- [Development](#-development)
+- [License](#-license)
 
-### Features 2 & 3: Unified AI Analysis ✅
-**One-Click Sentiment + ESG Analysis**
-- ⚡ **Unified Analyzer** - Single button for both analyses (runs in parallel)
-- 🤖 **Sentiment Analysis** - BERT AI: Positive/Negative/Neutral
-- 🏷️ **ESG Categorization** - Gemini AI: Environmental/Social/Governance
-- ⏱️ **Fast Processing** - Both analyses run simultaneously (~20-30 seconds)
-- 🎨 **Color-coded Badges** - ✅❌➖ (sentiment) + 🌍👥⚖️ (ESG)
-- 📦 **Batch Processing** - 10 articles at a time
+## ✨ Features
 
-### Feature 4: Trend Dashboard & Visualizations ✅
-**Beautiful Analytics Dashboard with Recharts**
-- 📈 **Sentiment Trends** - Line chart showing sentiment changes over time
-- 🥧 **ESG Distribution** - Pie chart with percentage breakdown
-- 📊 **Category Comparison** - Bar chart comparing E/S/G counts
-- 📅 **Timeline View** - Chronological list of ESG events with badges
-- 📱 **Responsive Design** - Works perfectly on desktop, tablet, and mobile
-- 🎨 **Modern UI** - Gradient backgrounds, smooth animations, hover effects
-- 📊 **Overview Cards** - Quick stats for total articles and sentiment breakdown
+### Core Features
+- **Company News Aggregation**: Fetch ESG-related news articles for any company using NewsAPI
+- **Sentiment Analysis**: AI-powered sentiment classification (Positive, Negative, Neutral) using Hugging Face Transformers
+- **ESG Categorization**: Automatic categorization into Environmental, Social, and Governance topics using Google Gemini AI
+- **Smart Summarization**: Generate concise summaries of articles using Google Gemini AI
+- **Analytics Dashboard**: Visualize sentiment trends and ESG distribution with interactive charts
+- **Duplicate Prevention**: Intelligent deduplication based on title and URL similarity
+- **Data Persistence**: MongoDB storage for historical data and offline access
 
-### Coming Soon 🔜
-- AI Summary Generation
-- Alerts & Notifications
-- Export Reports
+### User Interface
+- **Modern React UI**: Clean, responsive design with intuitive navigation
+- **Unified Analyzer**: Single-page tool for comprehensive company analysis
+- **Real-time Updates**: Live data fetching with loading states
+- **Interactive Charts**: Visualize data using Chart.js and Recharts
+- **Filtering & Search**: Filter articles by sentiment, ESG category, and keywords
 
-## 🛠️ Tech Stack
+## 🛠 Tech Stack
 
-**Frontend:**
-- React.js with React Router
-- Axios for API calls
-- Recharts for beautiful visualizations
-- Responsive CSS with gradients and animations
+### Frontend
+- **React 18.2** - UI framework
+- **React Router v7** - Client-side routing
+- **Axios** - HTTP client for API requests
+- **Chart.js & Recharts** - Data visualization
+- **CSS3** - Styling
 
-**Backend:**
-- Node.js
-- Express.js
-- MongoDB with Mongoose
-- NewsAPI.org for news aggregation
+### Backend
+- **Node.js** - Runtime environment
+- **Express.js 4.18** - Web framework
+- **MongoDB** - Database
+- **Mongoose 8.0** - ODM for MongoDB
 
-**AI/ML:**
-- Hugging Face Transformers.js (BERT) for sentiment analysis
-- Google Gemini API for ESG categorization
-- Local model execution (no external sentiment API needed)
+### APIs & AI Services
+- **NewsAPI** - News aggregation
+- **Google Gemini AI** - ESG categorization and summarization
+- **Hugging Face Transformers** - Sentiment analysis
 
-## 📋 Prerequisites
+### Development Tools
+- **Nodemon** - Auto-restart server on changes
+- **CORS** - Cross-origin resource sharing
+- **dotenv** - Environment variable management
 
-Before you begin, ensure you have the following installed:
-- Node.js (v14 or higher)
-- MongoDB (v4.4 or higher)
-- npm or yarn
+## 📁 Project Structure
 
-## 🔧 Installation & Setup
+```
+News/
+├── backend/
+│   ├── config/
+│   │   └── database.js              # MongoDB connection setup
+│   ├── models/
+│   │   └── NewsArticle.js           # Mongoose schema for news articles
+│   ├── routes/
+│   │   ├── newsRoutes.js            # News endpoints
+│   │   ├── sentimentRoutes.js       # Sentiment analysis endpoints
+│   │   ├── esgRoutes.js             # ESG categorization endpoints
+│   │   ├── analyticsRoutes.js       # Analytics & statistics endpoints
+│   │   └── summaryRoutes.js         # Summarization endpoints
+│   ├── services/
+│   │   ├── newsService.js           # News fetching business logic
+│   │   ├── sentimentService.js      # Sentiment analysis logic
+│   │   ├── esgCategorizationService.js  # ESG categorization logic
+│   │   └── summaryService.js        # Summarization logic
+│   ├── server.js                    # Express server entry point
+│   ├── package.json
+│   ├── .env                         # Environment variables
+│   └── .gitignore
+│
+├── frontend/
+│   ├── public/
+│   │   └── index.html               # HTML template
+│   ├── src/
+│   │   ├── components/
+│   │   │   ├── CompanySearch.js     # Company search component
+│   │   │   ├── NewsCard.js          # Individual news article card
+│   │   │   ├── NewsList.js          # List of news articles
+│   │   │   ├── Sidebar.js           # Navigation sidebar
+│   │   │   ├── LoadingSpinner.js    # Loading indicator
+│   │   │   └── UnifiedAnalyzer.js   # Unified analysis tool
+│   │   ├── pages/
+│   │   │   ├── HomePage.js          # Landing page
+│   │   │   ├── NewsPage.js          # News display page
+│   │   │   └── DashboardPage.js     # Analytics dashboard
+│   │   ├── App.js                   # Main app component
+│   │   ├── index.js                 # React entry point
+│   │   └── *.css                    # Component styles
+│   ├── package.json
+│   └── .gitignore
+│
+├── README.md                        # This file
+└── .gitignore
+```
+
+## 📦 Prerequisites
+
+Before running this application, ensure you have the following installed:
+
+- **Node.js** (v16 or higher) - [Download](https://nodejs.org/)
+- **MongoDB** (v6 or higher) - [Download](https://www.mongodb.com/try/download/community)
+- **npm** (comes with Node.js) or **yarn**
+
+### API Keys Required
+
+1. **NewsAPI Key** - Get it from [NewsAPI.org](https://newsapi.org/)
+2. **Google Gemini API Key** - Get it from [Google AI Studio](https://makersuite.google.com/app/apikey)
+
+## 🚀 Installation
 
 ### 1. Clone the Repository
 
 ```bash
-git clone https://github.com/gopalkrishna2004/ESG-News-Analyzer-Sentiment-Tracker.git
-cd ESG-News-Analyzer-Sentiment-Tracker
+git clone <repository-url>
+cd News
 ```
 
-### 2. Backend Setup
+### 2. Install Backend Dependencies
 
 ```bash
 cd backend
 npm install
-
-# Install Hugging Face Transformers for sentiment analysis
-npm install @huggingface/transformers
 ```
 
-Create a `.env` file in the backend directory:
-
-```env
-PORT=5000
-MONGODB_URI=mongodb://localhost:27017/esg-news-analyzer
-NEWS_API_KEY=your_newsapi_key_here
-GEMINI_API_KEY=your_gemini_api_key_here
-GEMINI_MODEL=gemini-2.0-flash-exp
-```
-
-### 3. Frontend Setup
+### 3. Install Frontend Dependencies
 
 ```bash
 cd ../frontend
 npm install
 ```
 
-### 4. Start MongoDB
+## ⚙️ Configuration
 
-Make sure MongoDB is running on your system:
+### Backend Configuration
 
-```bash
-# Windows
-net start MongoDB
+Create a `.env` file in the `backend/` directory:
 
-# macOS (with Homebrew)
-brew services start mongodb-community
-
-# Linux
-sudo systemctl start mongod
+```env
+PORT=5000
+MONGODB_URI=mongodb://localhost:27017/esg-news-analyzer
+NEWS_API_KEY=your_newsapi_key_here
+GEMINI_API_KEY=your_gemini_api_key_here
+GEMINI_MODEL=gemini-2.5-flash-lite
+NODE_ENV=development
 ```
 
-### 5. Run the Application
+**Configuration Options:**
 
-**Terminal 1 - Backend:**
+| Variable | Description | Default |
+|----------|-------------|---------|
+| `PORT` | Backend server port | `5000` |
+| `MONGODB_URI` | MongoDB connection string | `mongodb://localhost:27017/esg-news-analyzer` |
+| `NEWS_API_KEY` | Your NewsAPI key | Required |
+| `GEMINI_API_KEY` | Your Google Gemini API key | Required |
+| `GEMINI_MODEL` | Gemini model to use | `gemini-2.5-flash-lite` |
+| `NODE_ENV` | Environment mode | `development` |
+
+### Frontend Configuration
+
+The frontend is configured to proxy API requests to `http://localhost:5000` (defined in `frontend/package.json`).
+
+If your backend runs on a different port, update the `proxy` field in `frontend/package.json`:
+
+```json
+{
+  "proxy": "http://localhost:YOUR_PORT"
+}
+```
+
+## 🏃 Running the Application
+
+### Option 1: Run Backend and Frontend Separately
+
+**Terminal 1 - Start MongoDB:**
+```bash
+mongod
+```
+
+**Terminal 2 - Start Backend:**
 ```bash
 cd backend
 npm run dev
 ```
-Server will run on http://localhost:5000
+Backend will run on `http://localhost:5000`
 
-**Terminal 2 - Frontend:**
+**Terminal 3 - Start Frontend:**
 ```bash
 cd frontend
 npm start
 ```
-App will open on http://localhost:3000
+Frontend will run on `http://localhost:3000`
 
-## 📖 Usage
+### Option 2: Production Build
 
-### Quick Start (3 Steps!)
-
-**Step 1: Search**
-```
-Enter "Tesla" → Click Search
-Result: 10 ESG-related articles fetched
+**Build Frontend:**
+```bash
+cd frontend
+npm run build
 ```
 
-**Step 2: Analyze**
-```
-Click: ⚡ Analyze All (Sentiment + ESG)
-Wait: ~20-30 seconds
-Both analyses run in parallel!
-```
-
-**Step 3: View**
-```
-Every article now shows:
-├─ ✅ Positive (or ❌ Negative, ➖ Neutral)
-└─ 🌍 Environmental (or 👥 Social, ⚖️ Governance)
+**Run Backend in Production Mode:**
+```bash
+cd backend
+npm start
 ```
 
-📖 **Detailed Guide:** See `UNIFIED_ANALYSIS_QUICKSTART.md`
+### Verify Installation
 
-### Features:
+1. Check backend health: `http://localhost:5000/api/health`
+2. Open frontend: `http://localhost:3000`
 
-1. **Search for Companies:**
-   - Type company name or use quick search buttons
-   - Choose: Fetch New or View Stored articles
+## 🔄 Workflow & Architecture
 
-2. **AI Analysis (One Click!):**
-   - Click "⚡ Analyze All (Sentiment + ESG)"
-   - Both analyses run simultaneously
-   - Real-time progress tracking
+### Application Flow
 
-3. **View Results:**
-   - Color-coded sentiment badges
-   - ESG category badges
-   - Click "Read Full Article" for original source
+```
+┌─────────────┐
+│   User      │
+│  Interface  │
+│  (React)    │
+└──────┬──────┘
+       │
+       │ HTTP Requests
+       ▼
+┌─────────────────────────────────────┐
+│     Express.js Backend              │
+│  ┌────────────────────────────┐    │
+│  │   Routes Layer             │    │
+│  │  - News Routes             │    │
+│  │  - Sentiment Routes        │    │
+│  │  - ESG Routes              │    │
+│  │  - Analytics Routes        │    │
+│  │  - Summary Routes          │    │
+│  └────────┬───────────────────┘    │
+│           │                         │
+│  ┌────────▼───────────────────┐    │
+│  │   Services Layer           │    │
+│  │  - News Service            │    │
+│  │  - Sentiment Service       │    │
+│  │  - ESG Categorization      │    │
+│  │  - Summary Service         │    │
+│  └────────┬───────────────────┘    │
+│           │                         │
+└───────────┼─────────────────────────┘
+            │
+     ┌──────┴──────┬──────────────┐
+     │             │              │
+     ▼             ▼              ▼
+┌─────────┐  ┌──────────┐  ┌──────────┐
+│ MongoDB │  │ NewsAPI  │  │ Gemini   │
+│         │  │          │  │ AI API   │
+└─────────┘  └──────────┘  └──────────┘
+```
 
-## 🗄️ Database Schema
+### Data Processing Pipeline
 
-**NewsArticle Model:**
-```javascript
+1. **User Input**: User searches for a company
+2. **News Fetching**: Backend queries NewsAPI with ESG keywords
+3. **Deduplication**: Check against existing articles in MongoDB
+4. **AI Processing** (Parallel):
+   - Sentiment Analysis (Hugging Face)
+   - ESG Categorization (Gemini AI)
+   - Content Summarization (Gemini AI)
+5. **Storage**: Save processed articles to MongoDB
+6. **Response**: Return enriched data to frontend
+7. **Visualization**: Display articles, charts, and analytics
+
+### ESG Keyword Filtering
+
+The application filters news using these keywords:
+- **Environmental**: carbon, emissions, climate, renewable, pollution, sustainability
+- **Social**: diversity, inclusion, labor, human rights, community
+- **Governance**: ethics, compliance, corruption, board, transparency, ESG
+
+## 📚 API Documentation
+
+### Base URL
+```
+http://localhost:5000/api
+```
+
+### Endpoints
+
+#### Health Check
+```http
+GET /api/health
+```
+Check if the API is running.
+
+**Response:**
+```json
 {
-  company: String,           // Company name
-  title: String,            // Article title
-  description: String,      // Short description
-  content: String,          // Full content
-  url: String,              // Article URL (unique)
-  urlToImage: String,       // Image URL
-  publishedAt: Date,        // Publication date
-  source: {                 // News source
-    name: String,
-    id: String
-  },
-  author: String,           // Article author
-  sentiment: String,        // Positive/Negative/Neutral (BERT AI)
-  esgCategory: [String],    // Environmental/Social/Governance (Gemini AI)
-  aiSummary: String         // AI-generated summary
+  "success": true,
+  "message": "ESG News Analyzer API is running",
+  "timestamp": "2026-02-05T10:00:00.000Z"
 }
 ```
 
-## 🔌 API Endpoints
-
-### Search & Fetch News
-```
+#### Search News
+```http
 POST /api/news/search
-Body: { companyName: "Tesla", pageSize: 20 }
+```
+Fetch and process news articles for a company.
+
+**Request Body:**
+```json
+{
+  "companyName": "Tesla",
+  "pageSize": 20
+}
 ```
 
-### Get Stored News
+**Response:**
+```json
+{
+  "success": true,
+  "articles": [...],
+  "count": 15
+}
 ```
+
+#### Get Company News
+```http
 GET /api/news/company/:companyName
-Query Params: ?sentiment=Positive&esgCategory=Environmental&limit=50
+```
+Retrieve stored news articles for a company.
+
+**Query Parameters:**
+- `sentiment` - Filter by sentiment (Positive, Negative, Neutral)
+- `esgCategory` - Filter by category (Environmental, Social, Governance)
+- `limit` - Number of articles to return (default: 50)
+
+**Example:**
+```
+GET /api/news/company/Tesla?sentiment=Positive&esgCategory=Environmental&limit=10
 ```
 
-### Get All Companies
-```
+#### Get All Companies
+```http
 GET /api/news/companies
 ```
+Get list of all companies with stored news.
 
-### Get Statistics
+**Response:**
+```json
+{
+  "success": true,
+  "companies": ["Tesla", "Apple", "Microsoft"]
+}
 ```
+
+#### Get Company Statistics
+```http
 GET /api/news/stats/:companyName
 ```
+Get sentiment and ESG statistics for a company.
 
-### Health Check
+**Response:**
+```json
+{
+  "success": true,
+  "stats": {
+    "totalArticles": 45,
+    "sentimentCounts": {
+      "Positive": 20,
+      "Negative": 10,
+      "Neutral": 15
+    },
+    "esgCounts": {
+      "Environmental": 25,
+      "Social": 12,
+      "Governance": 8
+    }
+  }
+}
 ```
-GET /api/health
+
+#### Analyze Sentiment
+```http
+POST /api/sentiment/analyze
+```
+Analyze sentiment of a text.
+
+**Request Body:**
+```json
+{
+  "text": "Article text here..."
+}
 ```
 
-## 📊 ESG Categories
+#### Categorize ESG
+```http
+POST /api/esg/categorize
+```
+Categorize article into ESG topics.
 
-- **Environmental (🌍):** Climate change, carbon emissions, pollution, waste management, renewable energy, water conservation
-- **Social (👥):** Labor practices, diversity & inclusion, employee welfare, human rights, community relations, product safety
-- **Governance (⚖️):** Board diversity, executive compensation, corruption, transparency, shareholder rights, business ethics
+**Request Body:**
+```json
+{
+  "title": "Article title",
+  "description": "Article description"
+}
+```
 
-## 🎨 Screenshots
+#### Generate Summary
+```http
+POST /api/summary/generate
+```
+Generate AI summary of an article.
 
-_(Screenshots will be added after implementation)_
+**Request Body:**
+```json
+{
+  "title": "Article title",
+  "description": "Article description",
+  "content": "Full article content"
+}
+```
 
-## 🚧 Roadmap
+## 💻 Development
 
-- [x] Project setup (MERN stack)
-- [x] Company search functionality
-- [x] NewsAPI integration
-- [x] MongoDB data storage
-- [x] Responsive UI design
-- [x] Sentiment analysis with Hugging Face (BERT)
-- [x] ESG categorization with Gemini API
-- [x] Multi-page navigation with React Router
-- [x] Dashboard with Recharts (Line, Pie, Bar charts)
-- [x] Timeline view of ESG events
-- [x] Analytics API endpoints
-- [ ] AI summary generation
-- [ ] Email alerts system
+### Running in Development Mode
+
+**Backend (with auto-reload):**
+```bash
+cd backend
+npm run dev
+```
+
+**Frontend (with hot reload):**
+```bash
+cd frontend
+npm start
+```
+
+### Testing
+
+**Backend Tests:**
+```bash
+cd backend
+npm test
+```
+
+**Frontend Tests:**
+```bash
+cd frontend
+npm test
+```
+
+### Code Style
+
+- Follow standard JavaScript/React conventions
+- Use meaningful variable and function names
+- Add comments for complex logic
+- Keep components modular and reusable
+
+### Adding New Features
+
+1. Create feature branch: `git checkout -b feature/your-feature`
+2. Implement changes in appropriate service/component
+3. Test thoroughly
+4. Commit with descriptive message
+5. Create pull request
 
 ## 🤝 Contributing
 
-This is a college assignment project. Contributions are welcome for educational purposes.
+Contributions are welcome! Please follow these steps:
 
-## 📝 License
+1. Fork the repository
+2. Create a feature branch
+3. Commit your changes
+4. Push to the branch
+5. Open a pull request
 
-MIT License
+## 📄 License
 
-## 👨‍💻 Author
+This project is licensed under the ISC License.
 
-Created as part of PS Assignment 2 - ESG News Analyzer & Sentiment Tracker
+## 🐛 Troubleshooting
 
-## 📚 Documentation
+### Common Issues
 
-### Main Guides
-- **`UNIFIED_ANALYSIS_QUICKSTART.md`** ⭐ - **START HERE!** One-click analysis walkthrough
-- **`UNIFIED_ANALYSIS.md`** - Technical details of unified analyzer
+**MongoDB Connection Error:**
+- Ensure MongoDB is running: `mongod`
+- Check connection string in `.env`
 
-### Feature Documentation
-- **`FEATURE_2_SENTIMENT_ANALYSIS.md`** - Complete sentiment analysis docs
-- **`FEATURE_3_ESG_CATEGORIZATION.md`** - Complete ESG categorization docs
+**API Key Errors:**
+- Verify API keys are valid and not expired
+- Check rate limits on NewsAPI and Gemini
 
-### Troubleshooting
-- **`NEUTRAL_SENTIMENT_LOGIC.md`** - Neutral sentiment detection explained
-- **`FIX_HUGGINGFACE_ERROR.md`** - Model loading issues
+**Port Already in Use:**
+```bash
+# Find process using port 5000
+netstat -ano | findstr :5000
+# Kill process (Windows)
+taskkill /PID <PID> /F
+```
 
-## 🙏 Acknowledgments
+**CORS Issues:**
+- Verify proxy setting in frontend `package.json`
+- Check CORS middleware in backend
 
-- NewsAPI.org for news aggregation
-- Hugging Face for Transformers.js and BERT models
-- Google for Gemini API
-- MongoDB for database
-- React.js for frontend
+## 📧 Contact
+
+For questions or support, please open an issue in the repository.
 
 ---
 
-**Note:** This application is built for educational purposes as part of a college assignment. Make sure to comply with NewsAPI terms of service and rate limits.
+**Built with ❤️ for ESG-conscious investing and corporate transparency**

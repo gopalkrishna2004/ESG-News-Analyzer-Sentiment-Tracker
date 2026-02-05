@@ -21,23 +21,18 @@ const ESG_KEYWORDS = {
   
   // Environmental (E): Climate change, carbon emissions, pollution, waste management, renewable energy, water conservation
   environmental: [
-    'climate change', 'carbon emissions', 'pollution', 'waste management',
-    'renewable energy', 'water conservation', 'environmental impact',
-    'net zero', 'carbon footprint', 'green energy', 'clean energy'
+    'climate change', 'carbon emissions', 'pollution', 'renewable energy'
   ],
   
   // Social (S): Labor practices, diversity & inclusion, employee welfare, human rights, community relations, product safety
   social: [
-    'labor practices', 'diversity inclusion', 'employee welfare', 'human rights',
-    'community relations', 'product safety', 'workplace safety',
-    'gender equality', 'fair labor', 'worker rights'
+    'labor practices','employee welfare', 'community relations', 'product safety'
   ],
   
   // Governance (G): Board diversity, executive compensation, corruption, transparency, shareholder rights, business ethics
   governance: [
     'board diversity', 'executive compensation', 'corruption', 'transparency',
-    'shareholder rights', 'business ethics', 'corporate governance',
-    'compliance', 'accountability', 'ethical practices'
+    'shareholder rights' , 'business ethics'
   ]
 };
 
