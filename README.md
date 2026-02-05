@@ -2,26 +2,11 @@
 
 A full-stack web application that aggregates, analyzes, and visualizes ESG (Environmental, Social, and Governance) news articles for companies. The application provides real-time sentiment analysis, ESG categorization, and AI-powered summarization using Google's Gemini AI.
 
-## 📋 Table of Contents
-
-- [Demo Video](#-demo-video)
-- [Features](#-features)
-- [Tech Stack](#-tech-stack)
-- [Project Structure](#-project-structure)
-- [Prerequisites](#-prerequisites)
-- [Installation](#-installation)
-- [Configuration](#-configuration)
-- [Running the Application](#-running-the-application)
-- [Workflow & Architecture](#-workflow--architecture)
-- [API Documentation](#-api-documentation)
-- [Development](#-development)
-- [License](#-license)
-
 ## 🎥 Demo Video
 
 Watch the full application demo to see all features in action:
 
-https://github.com/user-attachments/assets/demo.mp4
+https://drive.google.com/file/d/1-zBTME9twmFAp45A3UiXNetb5R3fWIJD/view?usp=sharing
 
 **What's shown in the demo:**
 - 🔍 Company search and news aggregation
@@ -236,11 +221,6 @@ npm run build
 cd backend
 npm start
 ```
-
-### Verify Installation
-
-1. Check backend health: `http://localhost:5000/api/health`
-2. Open frontend: `http://localhost:3000`
 
 ## 🔄 Workflow & Architecture
 
