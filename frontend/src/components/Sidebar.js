@@ -48,7 +48,6 @@ function Sidebar({ company }) {
             className={`sidebar-nav-item ${isActive('/') ? 'active' : ''}`}
             onClick={() => navigateTo('/')}
           >
-            <span className="nav-icon">🏠</span>
             <span className="nav-text">Home</span>
           </button>
 
@@ -58,7 +57,6 @@ function Sidebar({ company }) {
                 className={`sidebar-nav-item ${isActive('/news') ? 'active' : ''}`}
                 onClick={() => navigateTo('/news', { company })}
               >
-                <span className="nav-icon">📰</span>
                 <span className="nav-text">News</span>
               </button>
 
@@ -66,7 +64,6 @@ function Sidebar({ company }) {
                 className={`sidebar-nav-item ${isActive('/dashboard') ? 'active' : ''}`}
                 onClick={() => navigateTo('/dashboard', { company })}
               >
-                <span className="nav-icon">📊</span>
                 <span className="nav-text">Dashboard</span>
               </button>
             </>

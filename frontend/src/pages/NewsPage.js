@@ -79,7 +79,7 @@ function NewsPage() {
           <h1 className="page-title">{company}</h1>
           <div className="page-actions">
             <button onClick={handleAnalyze} disabled={loading} className="action-btn analyze-btn">
-              {loading ? '🔄 Analyzing...' : '🚀 Analyze'}
+              {loading ? 'Analyzing...' : 'Analyze'}
             </button>
           </div>
         </div>
