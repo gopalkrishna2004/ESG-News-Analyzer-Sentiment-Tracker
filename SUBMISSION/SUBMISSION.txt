@@ -1,0 +1,93 @@
+
+                   ESG NEWS ANALYZER & SENTIMENT TRACKER - SUBMISSION
+
+
+Student Name: N.Siva Gopala Krishna 
+Student ID: 220401
+
+
+PROJECT LINKS:
+
+Demo Video:
+https://drive.google.com/file/d/1-zBTME9twmFAp45A3UiXNetb5R3fWIJD/view?usp=sharing
+
+SUBMISSION CHECKLIST:
+Source Code (GitHub Repository)
+Demo Video
+README.md with setup instructions
+Problem Statement Document (PDF)
+AI Usage Report (PDF)
+SUBMISSION.txt 
+
+PROJECT OVERVIEW:
+
+Project Name: ESG News Analyzer & Sentiment Tracker
+
+Description: 
+A full-stack web application that aggregates, analyzes, and visualizes 
+ESG (Environmental, Social, and Governance) news articles for companies. 
+The application provides real-time sentiment analysis, ESG categorization, 
+and AI-powered summarization to help users understand corporate 
+sustainability and governance practices.
+
+Tech Stack:
+- Frontend: React, React Router, Chart.js, Recharts, Axios
+- Backend: Node.js, Express, MongoDB, Mongoose
+- AI Integration: Google Gemini AI, Hugging Face Transformers
+- APIs: NewsAPI for news aggregation
+- Development Tools: Nodemon, CORS, dotenv
+
+
+INSTALLATION INSTRUCTIONS:
+
+Prerequisites:
+- Node.js installed
+- MongoDB installed 
+- NewsAPI Key (from https://newsapi.org/)
+- Google Gemini API Key 
+
+Backend Setup:
+1. cd backend
+2. npm install
+3. Create .env file with required credentials (see below)
+4. npm run dev (development mode with auto-reload)
+   OR
+   npm start (production mode)
+
+Frontend Setup:
+1. cd frontend
+2. npm install
+3. npm start
+
+MongoDB Setup:
+1. Start MongoDB service:
+   mongod
+   OR
+   Use MongoDB Atlas cloud database
+
+Application will run on:
+- Backend: http://localhost:5000
+- Frontend: http://localhost:3000
+
+ENVIRONMENT VARIABLES:
+
+Backend .env file requires:
+- PORT=5000
+- MONGODB_URI=mongodb://localhost:27017/esg-news-analyzer
+- NEWS_API_KEY=[Your NewsAPI key]
+- GEMINI_API_KEY=[Your Google Gemini API key]
+- GEMINI_MODEL=gemini-2.5-flash-lite
+- NODE_ENV=development
+
+Note: An .env.example file is provided in the backend directory for reference.
+
+USAGE WORKFLOW:
+
+1. Start the application (backend, frontend, and MongoDB)
+2. Navigate to http://localhost:3000
+3. Use the Company Search feature to search for any company
+4. View aggregated ESG-related news articles
+5. Analyze sentiment distribution and ESG categorization
+6. Read AI-generated summaries of key issues
+7. Explore the Analytics Dashboard for visualizations
+8. Filter articles by sentiment, ESG category, or keywords
