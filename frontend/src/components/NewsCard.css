@@ -1,24 +1,26 @@
 .news-card {
-  background: white;
+  background: #2a2a2a;
   border-radius: 8px;
   overflow: hidden;
-  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.08);
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.5);
   transition: all 0.2s ease;
   display: flex;
   flex-direction: column;
   height: 100%;
+  border: 1px solid #3a3a3a;
 }
 
 .news-card:hover {
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.12);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.7);
   transform: translateY(-2px);
+  border-color: #4a4a4a;
 }
 
 .news-image {
   width: 100%;
   height: 180px;
   overflow: hidden;
-  background: #f3f4f6;
+  background: #1a1a1a;
 }
 
 .news-image img {
@@ -43,16 +45,16 @@
 }
 
 .news-source {
-  color: #667eea;
+  color: #9a9a9a;
   font-weight: 600;
 }
 
 .news-date {
-  color: #9ca3af;
+  color: #6a6a6a;
 }
 
 .news-title {
-  color: #1f2937;
+  color: #e5e5e5;
   font-size: 1rem;
   font-weight: 600;
   line-height: 1.4;
@@ -64,7 +66,7 @@
 }
 
 .news-description {
-  color: #4b5563;
+  color: #b0b0b0;
   font-size: 0.875rem;
   line-height: 1.5;
   margin-bottom: 0.75rem;
@@ -76,7 +78,7 @@
 }
 
 .news-author {
-  color: #9ca3af;
+  color: #6a6a6a;
   font-size: 0.8rem;
   font-style: italic;
   margin-bottom: 1rem;
@@ -86,19 +88,21 @@
 .read-more-btn {
   display: inline-block;
   padding: 0.625rem 1rem;
-  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-  color: white;
+  background: #3a3a3a;
+  color: #e5e5e5;
   border-radius: 6px;
   text-decoration: none;
   font-size: 0.875rem;
   font-weight: 600;
   transition: all 0.2s ease;
   text-align: center;
+  border: 1px solid #4a4a4a;
 }
 
 .read-more-btn:hover {
+  background: #4a4a4a;
   transform: translateY(-1px);
-  box-shadow: 0 4px 12px rgba(102, 126, 234, 0.3);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.5);
 }
 
 /* Badges */
@@ -118,7 +122,7 @@
   border-radius: 6px;
   font-size: 0.75rem;
   font-weight: 600;
-  color: white;
+  color: #1a1a1a;
   white-space: nowrap;
   line-height: 1.2;
 }
@@ -130,8 +134,8 @@
 
 /* AI Summary */
 .ai-summary {
-  background: #f9fafb;
-  border-left: 3px solid #667eea;
+  background: #1a1a1a;
+  border-left: 3px solid #5a5a5a;
   padding: 0.75rem;
   border-radius: 4px;
   margin-bottom: 1rem;
@@ -140,13 +144,13 @@
 .ai-summary-label {
   font-size: 0.75rem;
   font-weight: 600;
-  color: #667eea;
+  color: #9a9a9a;
   margin: 0 0 0.25rem 0;
 }
 
 .ai-summary-text {
   font-size: 0.8rem;
-  color: #4b5563;
+  color: #b0b0b0;
   margin: 0;
   line-height: 1.4;
 }

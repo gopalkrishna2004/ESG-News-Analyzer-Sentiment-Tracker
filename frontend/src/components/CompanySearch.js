@@ -89,26 +89,22 @@ function CompanySearch({ onSearchSuccess }) {
           </div>
 
           <div className="search-options">
-            <label className="radio-label">
-              <input
-                type="radio"
-                value="new"
-                checked={searchType === 'new'}
-                onChange={(e) => setSearchType(e.target.value)}
-                disabled={loading}
-              />
-              <span>Fetch New Articles</span>
-            </label>
-            <label className="radio-label">
-              <input
-                type="radio"
-                value="stored"
-                checked={searchType === 'stored'}
-                onChange={(e) => setSearchType(e.target.value)}
-                disabled={loading}
-              />
-              <span>View Stored Articles</span>
-            </label>
+            <button
+              type="button"
+              className={`option-btn ${searchType === 'new' ? 'active' : ''}`}
+              onClick={() => setSearchType('new')}
+              disabled={loading}
+            >
+              Fetch New Articles
+            </button>
+            <button
+              type="button"
+              className={`option-btn ${searchType === 'stored' ? 'active' : ''}`}
+              onClick={() => setSearchType('stored')}
+              disabled={loading}
+            >
+              View Stored Articles
+            </button>
           </div>
         </form>
 

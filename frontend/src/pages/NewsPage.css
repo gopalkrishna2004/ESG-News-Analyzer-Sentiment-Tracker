@@ -1,6 +1,6 @@
 .news-page {
   min-height: 100vh;
-  background: #f5f7fa;
+  background: #1a1a1a;
   display: flex;
 }
 
@@ -23,7 +23,7 @@
 
 .page-title {
   font-size: 1.75rem;
-  color: #1f2937;
+  color: #e5e5e5;
   font-weight: 700;
   margin: 0;
 }
@@ -44,23 +44,25 @@
 }
 
 .analyze-btn {
-  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-  color: white;
+  background: #3a3a3a;
+  color: #e5e5e5;
+  border: 1px solid #4a4a4a;
 }
 
 .analyze-btn:hover:not(:disabled) {
+  background: #4a4a4a;
   transform: translateY(-2px);
-  box-shadow: 0 4px 12px rgba(102, 126, 234, 0.3);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.5);
 }
 
 .analyze-btn:disabled {
-  opacity: 0.6;
+  opacity: 0.4;
   cursor: not-allowed;
 }
 
 .article-count {
   font-size: 0.9rem;
-  color: #6b7280;
+  color: #b0b0b0;
   font-weight: 500;
   margin: 0 0 1.5rem 0;
 }
@@ -84,8 +86,8 @@
 .spinner {
   width: 48px;
   height: 48px;
-  border: 3px solid #e5e7eb;
-  border-top-color: #667eea;
+  border: 3px solid #3a3a3a;
+  border-top-color: #6a6a6a;
   border-radius: 50%;
   animation: spin 0.8s linear infinite;
   margin-bottom: 1rem;
@@ -96,7 +98,7 @@
 }
 
 .loading-state p {
-  color: #6b7280;
+  color: #b0b0b0;
   font-size: 0.95rem;
 }
 

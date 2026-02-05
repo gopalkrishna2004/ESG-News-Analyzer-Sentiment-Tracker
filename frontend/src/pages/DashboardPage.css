@@ -1,6 +1,6 @@
 .dashboard-page {
   min-height: 100vh;
-  background: #f5f7fa;
+  background: #1a1a1a;
   display: flex;
 }
 
@@ -18,7 +18,7 @@
 
 .page-title {
   font-size: 1.75rem;
-  color: #1f2937;
+  color: #e5e5e5;
   font-weight: 700;
   margin: 0;
 }
@@ -32,50 +32,53 @@
 }
 
 .stat-box {
-  background: white;
+  background: #2a2a2a;
   border-radius: 8px;
   padding: 1.25rem;
-  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.08);
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.5);
   transition: all 0.2s ease;
+  border: 1px solid #3a3a3a;
 }
 
 .stat-box:hover {
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.7);
   transform: translateY(-2px);
+  border-color: #4a4a4a;
 }
 
 .stat-number {
   font-size: 2rem;
   font-weight: 700;
-  color: #1f2937;
+  color: #e5e5e5;
   margin-bottom: 0.25rem;
 }
 
 .stat-label {
   font-size: 0.85rem;
-  color: #6b7280;
+  color: #b0b0b0;
   font-weight: 500;
 }
 
 .stat-box.positive .stat-number {
-  color: #10b981;
+  color: #4ade80;
 }
 
 .stat-box.negative .stat-number {
-  color: #ef4444;
+  color: #f87171;
 }
 
 .stat-box.neutral .stat-number {
-  color: #6b7280;
+  color: #9ca3af;
 }
 
 /* AI Summary Section */
 .summary-section {
-  background: white;
+  background: #2a2a2a;
   border-radius: 8px;
   padding: 1.5rem;
-  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.08);
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.5);
   margin-bottom: 2.5rem;
+  border: 1px solid #3a3a3a;
 }
 
 .summary-header {
@@ -84,19 +87,19 @@
   align-items: center;
   margin-bottom: 1.25rem;
   padding-bottom: 1rem;
-  border-bottom: 2px solid #f3f4f6;
+  border-bottom: 2px solid #1a1a1a;
 }
 
 .summary-header h3 {
   font-size: 1.2rem;
-  color: #1f2937;
+  color: #e5e5e5;
   margin: 0;
   font-weight: 600;
 }
 
 .summary-timestamp {
   font-size: 0.8rem;
-  color: #9ca3af;
+  color: #6a6a6a;
 }
 
 .summary-loading {
@@ -114,16 +117,17 @@
 }
 
 .summary-loading p {
-  color: #6b7280;
+  color: #b0b0b0;
   font-size: 0.9rem;
 }
 
 .summary-overview {
-  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-  color: white;
+  background: #3a3a3a;
+  color: #e5e5e5;
   padding: 1.25rem;
   border-radius: 6px;
   margin-bottom: 1.5rem;
+  border: 1px solid #4a4a4a;
 }
 
 .summary-overview p {
@@ -143,22 +147,21 @@
   padding: 1.25rem;
   border-radius: 6px;
   border-left: 4px solid;
+  background: #1a1a1a;
 }
 
 .summary-box.concerns {
-  background: #fef2f2;
-  border-left-color: #ef4444;
+  border-left-color: #f87171;
 }
 
 .summary-box.highlights {
-  background: #f0fdf4;
-  border-left-color: #10b981;
+  border-left-color: #4ade80;
 }
 
 .summary-box h4 {
   font-size: 1rem;
   margin: 0 0 0.75rem 0;
-  color: #1f2937;
+  color: #e5e5e5;
   font-weight: 600;
 }
 
@@ -171,7 +174,7 @@
 .summary-box li {
   font-size: 0.875rem;
   line-height: 1.6;
-  color: #4b5563;
+  color: #b0b0b0;
   margin-bottom: 0.5rem;
 }
 
@@ -186,7 +189,7 @@
 .trending-topics h4 {
   font-size: 1rem;
   margin: 0 0 1rem 0;
-  color: #1f2937;
+  color: #e5e5e5;
   font-weight: 600;
 }
 
@@ -201,26 +204,24 @@
   border-radius: 6px;
   border: 2px solid;
   transition: all 0.2s ease;
+  background: #1a1a1a;
 }
 
 .topic-card.environmental {
-  background: #f0fdf4;
-  border-color: #10b981;
+  border-color: #4ade80;
 }
 
 .topic-card.social {
-  background: #eff6ff;
-  border-color: #3b82f6;
+  border-color: #60a5fa;
 }
 
 .topic-card.governance {
-  background: #faf5ff;
-  border-color: #8b5cf6;
+  border-color: #a78bfa;
 }
 
 .topic-card:hover {
   transform: translateY(-2px);
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.08);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5);
 }
 
 .topic-header {
@@ -234,7 +235,7 @@
 .topic-name {
   font-size: 0.9rem;
   font-weight: 600;
-  color: #1f2937;
+  color: #e5e5e5;
   flex: 1;
 }
 
@@ -247,18 +248,18 @@
 }
 
 .topic-importance.high {
-  background: #fee2e2;
-  color: #991b1b;
+  background: #4a2a2a;
+  color: #f87171;
 }
 
 .topic-importance.medium {
-  background: #fef3c7;
-  color: #92400e;
+  background: #4a3a1a;
+  color: #fbbf24;
 }
 
 .topic-importance.low {
-  background: #e5e7eb;
-  color: #4b5563;
+  background: #2a2a2a;
+  color: #9ca3af;
 }
 
 .topic-meta {
@@ -269,41 +270,39 @@
 
 .topic-category {
   font-weight: 600;
-  color: #6b7280;
+  color: #9ca3af;
 }
 
 .topic-sentiment {
   padding: 0.15rem 0.5rem;
   border-radius: 3px;
   font-weight: 600;
+  background: #3a3a3a;
 }
 
 .topic-sentiment.positive {
-  background: #d1fae5;
-  color: #065f46;
+  color: #4ade80;
 }
 
 .topic-sentiment.negative {
-  background: #fee2e2;
-  color: #991b1b;
+  color: #f87171;
 }
 
 .topic-sentiment.neutral {
-  background: #e5e7eb;
-  color: #4b5563;
+  color: #9ca3af;
 }
 
 .summary-recommendations {
-  background: #fffbeb;
+  background: #3a2a1a;
   padding: 1rem;
   border-radius: 6px;
-  border-left: 4px solid #f59e0b;
+  border-left: 4px solid #fbbf24;
 }
 
 .summary-recommendations h4 {
   font-size: 0.95rem;
   margin: 0 0 0.5rem 0;
-  color: #1f2937;
+  color: #e5e5e5;
   font-weight: 600;
 }
 
@@ -311,7 +310,7 @@
   margin: 0;
   font-size: 0.875rem;
   line-height: 1.6;
-  color: #4b5563;
+  color: #b0b0b0;
 }
 
 /* Charts Section */
@@ -323,10 +322,11 @@
 }
 
 .chart-box {
-  background: white;
+  background: #2a2a2a;
   border-radius: 8px;
   padding: 1.5rem;
-  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.08);
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.5);
+  border: 1px solid #3a3a3a;
 }
 
 .chart-box.wide {
@@ -335,7 +335,7 @@
 
 .chart-box h3 {
   font-size: 1.1rem;
-  color: #1f2937;
+  color: #e5e5e5;
   margin: 0 0 1.25rem 0;
   font-weight: 600;
 }
@@ -345,21 +345,22 @@
   align-items: center;
   justify-content: center;
   height: 280px;
-  color: #9ca3af;
+  color: #6a6a6a;
   font-size: 0.9rem;
 }
 
 /* Timeline Section */
 .timeline-section {
-  background: white;
+  background: #2a2a2a;
   border-radius: 8px;
   padding: 1.5rem;
-  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.08);
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.5);
+  border: 1px solid #3a3a3a;
 }
 
 .timeline-section h3 {
   font-size: 1.1rem;
-  color: #1f2937;
+  color: #e5e5e5;
   margin: 0 0 1.5rem 0;
   font-weight: 600;
 }
@@ -379,7 +380,7 @@
 .timeline-line-marker {
   width: 12px;
   height: 12px;
-  background: #667eea;
+  background: #6a6a6a;
   border-radius: 50%;
   flex-shrink: 0;
   margin-top: 0.375rem;
@@ -388,15 +389,15 @@
 .timeline-card {
   flex: 1;
   padding: 1rem;
-  background: #f9fafb;
+  background: #1a1a1a;
   border-radius: 6px;
-  border-left: 3px solid #e5e7eb;
+  border-left: 3px solid #3a3a3a;
   transition: all 0.2s ease;
 }
 
 .timeline-card:hover {
-  background: #f3f4f6;
-  border-left-color: #667eea;
+  background: #222;
+  border-left-color: #5a5a5a;
 }
 
 .timeline-header {
@@ -409,18 +410,18 @@
 
 .timeline-date {
   font-size: 0.8rem;
-  color: #6b7280;
+  color: #9ca3af;
   font-weight: 500;
 }
 
 .timeline-source {
   font-size: 0.75rem;
-  color: #9ca3af;
+  color: #6a6a6a;
 }
 
 .timeline-title {
   font-size: 0.95rem;
-  color: #1f2937;
+  color: #e5e5e5;
   margin: 0 0 0.75rem 0;
   line-height: 1.4;
   font-weight: 500;
@@ -438,36 +439,31 @@
   border-radius: 4px;
   font-size: 0.75rem;
   font-weight: 600;
+  background: #3a3a3a;
 }
 
 .badge.sentiment-positive {
-  background: #d1fae5;
-  color: #065f46;
+  color: #4ade80;
 }
 
 .badge.sentiment-negative {
-  background: #fee2e2;
-  color: #991b1b;
+  color: #f87171;
 }
 
 .badge.sentiment-neutral {
-  background: #e5e7eb;
-  color: #4b5563;
+  color: #9ca3af;
 }
 
 .badge.esg-environmental {
-  background: #d1fae5;
-  color: #047857;
+  color: #4ade80;
 }
 
 .badge.esg-social {
-  background: #dbeafe;
-  color: #1e40af;
+  color: #60a5fa;
 }
 
 .badge.esg-governance {
-  background: #ede9fe;
-  color: #6b21a8;
+  color: #a78bfa;
 }
 
 /* Loading State */
@@ -482,8 +478,8 @@
 .loading-spinner {
   width: 48px;
   height: 48px;
-  border: 3px solid #e5e7eb;
-  border-top-color: #667eea;
+  border: 3px solid #3a3a3a;
+  border-top-color: #6a6a6a;
   border-radius: 50%;
   animation: spin 0.8s linear infinite;
   margin-bottom: 1rem;
@@ -494,7 +490,7 @@
 }
 
 .loading-container p {
-  color: #6b7280;
+  color: #b0b0b0;
   font-size: 0.95rem;
 }
 
