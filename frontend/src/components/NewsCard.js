@@ -11,52 +11,53 @@ function NewsCard({ article }) {
     });
   };
 
-  const getSentimentBadge = (sentiment) => {
-    if (!sentiment) return null;
-    
-    const badges = {
-      'Positive': { emoji: '✅', color: '#10b981', label: 'Positive' },
-      'Negative': { emoji: '❌', color: '#ef4444', label: 'Negative' },
-      'Neutral': { emoji: '➖', color: '#6b7280', label: 'Neutral' }
-    };
+  const renderBadges = (sentiment, categories) => {
+    const badges = [];
 
-    const badge = badges[sentiment];
-    if (!badge) return null;
+    // Add sentiment badge
+    if (sentiment) {
+      const sentimentBadges = {
+        'Positive': { color: '#10b981', label: 'Positive' },
+        'Negative': { color: '#ef4444', label: 'Negative' },
+        'Neutral': { color: '#6b7280', label: 'Neutral' }
+      };
 
-    return (
-      <span className="sentiment-badge" style={{ backgroundColor: badge.color }}>
-        {badge.emoji} {badge.label}
-      </span>
-    );
-  };
+      const badge = sentimentBadges[sentiment];
+      if (badge) {
+        badges.push(
+          <span key="sentiment" className="badge sentiment-badge" style={{ backgroundColor: badge.color }}>
+            {badge.label}
+          </span>
+        );
+      }
+    }
 
-  const getESGBadges = (categories) => {
-    if (!categories || categories.length === 0) return null;
+    // Add ESG badges
+    if (categories && categories.length > 0) {
+      const esgBadges = {
+        'Environmental': { color: '#10b981', shortLabel: 'E', fullLabel: 'Environmental' },
+        'Social': { color: '#3b82f6', shortLabel: 'S', fullLabel: 'Social' },
+        'Governance': { color: '#8b5cf6', shortLabel: 'G', fullLabel: 'Governance' }
+      };
 
-    const badges = {
-      'Environmental': { emoji: '🌍', color: '#10b981' },
-      'Social': { emoji: '👥', color: '#3b82f6' },
-      'Governance': { emoji: '⚖️', color: '#8b5cf6' }
-    };
-
-    return (
-      <div className="esg-badges">
-        {categories.map((category, index) => {
-          const badge = badges[category];
-          if (!badge) return null;
-          
-          return (
+      categories.forEach((category, index) => {
+        const badge = esgBadges[category];
+        if (badge) {
+          badges.push(
             <span 
-              key={index} 
-              className="esg-badge" 
+              key={`esg-${index}`}
+              className="badge esg-badge" 
               style={{ backgroundColor: badge.color }}
+              title={badge.fullLabel}
             >
-              {badge.emoji} {category}
+              {badge.shortLabel}
             </span>
           );
-        })}
-      </div>
-    );
+        }
+      });
+    }
+
+    return badges;
   };
 
   return (
@@ -67,7 +68,7 @@ function NewsCard({ article }) {
         </div>
       )}
       
-      <div className="news-content">
+      <div className="card-content">
         <div className="news-meta">
           <span className="news-source">{article.source?.name || 'Unknown Source'}</span>
           <span className="news-date">{formatDate(article.publishedAt)}</span>
@@ -84,8 +85,7 @@ function NewsCard({ article }) {
         )}
 
         <div className="news-badges">
-          {getSentimentBadge(article.sentiment)}
-          {getESGBadges(article.esgCategory)}
+          {renderBadges(article.sentiment, article.esgCategory)}
         </div>
 
         {article.aiSummary && (

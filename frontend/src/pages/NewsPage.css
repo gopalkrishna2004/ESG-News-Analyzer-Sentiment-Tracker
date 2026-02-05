@@ -1,53 +1,46 @@
 .news-page {
   min-height: 100vh;
   background: #f5f7fa;
-}
-
-/* Top Navigation */
-.top-nav {
-  background: white;
-  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.06);
-  padding: 1rem 2rem;
   display: flex;
-  align-items: center;
-  justify-content: space-between;
-  gap: 2rem;
-  position: sticky;
-  top: 0;
-  z-index: 100;
 }
 
-.company-title {
+/* Main Content */
+.news-content {
   flex: 1;
-  font-size: 1.4rem;
+  margin-left: 260px;
+  padding: 2rem;
+  transition: margin-left 0.3s ease;
+}
+
+.page-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 1.5rem;
+  gap: 1rem;
+  flex-wrap: wrap;
+}
+
+.page-title {
+  font-size: 1.75rem;
   color: #1f2937;
-  font-weight: 600;
+  font-weight: 700;
   margin: 0;
 }
 
-.nav-actions {
+.page-actions {
   display: flex;
   gap: 0.75rem;
 }
 
-.nav-btn {
-  padding: 0.625rem 1.25rem;
-  border-radius: 6px;
-  font-size: 0.9rem;
+.action-btn {
+  padding: 0.75rem 1.5rem;
+  border-radius: 8px;
+  font-size: 0.95rem;
   font-weight: 600;
   cursor: pointer;
   transition: all 0.2s ease;
   border: none;
-}
-
-.back-btn {
-  background: #f3f4f6;
-  color: #6b7280;
-}
-
-.back-btn:hover {
-  background: #e5e7eb;
-  color: #374151;
 }
 
 .analyze-btn {
@@ -56,7 +49,7 @@
 }
 
 .analyze-btn:hover:not(:disabled) {
-  transform: translateY(-1px);
+  transform: translateY(-2px);
   box-shadow: 0 4px 12px rgba(102, 126, 234, 0.3);
 }
 
@@ -65,32 +58,11 @@
   cursor: not-allowed;
 }
 
-.dashboard-btn {
-  background: #10b981;
-  color: white;
-}
-
-.dashboard-btn:hover {
-  background: #059669;
-  transform: translateY(-1px);
-}
-
-/* Main Content */
-.news-content {
-  max-width: 1400px;
-  margin: 0 auto;
-  padding: 2.5rem 2rem;
-}
-
-.content-header {
-  margin-bottom: 1.5rem;
-}
-
 .article-count {
   font-size: 0.9rem;
   color: #6b7280;
   font-weight: 500;
-  margin: 0;
+  margin: 0 0 1.5rem 0;
 }
 
 /* Articles Grid */
@@ -136,35 +108,32 @@
 }
 
 @media (max-width: 768px) {
-  .top-nav {
-    padding: 0.875rem 1rem;
-    flex-wrap: wrap;
-  }
-
-  .company-title {
-    width: 100%;
-    text-align: center;
-    font-size: 1.2rem;
-    margin-bottom: 0.5rem;
-  }
-
-  .nav-actions {
-    width: 100%;
-    justify-content: center;
-  }
-
   .news-content {
-    padding: 1.5rem 1rem;
+    margin-left: 0;
+    padding: 5rem 1rem 1rem 1rem;
+  }
+
+  .page-header {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .page-title {
+    font-size: 1.5rem;
+  }
+
+  .page-actions {
+    width: 100%;
+  }
+
+  .action-btn {
+    flex: 1;
+    font-size: 0.9rem;
+    padding: 0.75rem 1rem;
   }
 
   .articles-grid {
     grid-template-columns: 1fr;
     gap: 1rem;
-  }
-
-  .nav-btn {
-    flex: 1;
-    font-size: 0.85rem;
-    padding: 0.625rem 1rem;
   }
 }

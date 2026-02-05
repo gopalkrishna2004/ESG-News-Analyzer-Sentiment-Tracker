@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { useLocation, useNavigate } from 'react-router-dom';
 import axios from 'axios';
 import NewsCard from '../components/NewsCard';
+import Sidebar from '../components/Sidebar';
 import './NewsPage.css';
 
 function NewsPage() {
@@ -12,13 +13,35 @@ function NewsPage() {
   const [loading, setLoading] = useState(false);
 
   useEffect(() => {
-    if (location.state) {
-      setCompany(location.state.company);
-      setArticles(location.state.articles || []);
+    if (location.state?.company) {
+      const companyName = location.state.company;
+      setCompany(companyName);
+      
+      // If articles are provided in state, use them
+      if (location.state.articles && location.state.articles.length > 0) {
+        setArticles(location.state.articles);
+      } else {
+        // Otherwise, fetch articles from the database
+        fetchArticles(companyName);
+      }
     } else {
       navigate('/');
     }
   }, [location, navigate]);
+
+  const fetchArticles = async (companyName) => {
+    setLoading(true);
+    try {
+      const response = await axios.get(`/api/news/company/${encodeURIComponent(companyName)}`);
+      if (response.data.success) {
+        setArticles(response.data.articles);
+      }
+    } catch (error) {
+      console.error('Error fetching articles:', error);
+    } finally {
+      setLoading(false);
+    }
+  };
 
   const handleAnalyze = async () => {
     if (!company) return;
@@ -48,27 +71,19 @@ function NewsPage() {
 
   return (
     <div className="news-page">
-      {/* Top Navigation Bar */}
-      <nav className="top-nav">
-        <button onClick={() => navigate('/')} className="nav-btn back-btn">
-          ← Home
-        </button>
-        <h1 className="company-title">{company}</h1>
-        <div className="nav-actions">
-          <button onClick={handleAnalyze} disabled={loading} className="nav-btn analyze-btn">
-            {loading ? '🔄 Analyzing...' : '🚀 Analyze'}
-          </button>
-          <button onClick={() => navigate('/dashboard', { state: { company } })} className="nav-btn dashboard-btn">
-            📊 Dashboard
-          </button>
-        </div>
-      </nav>
+      <Sidebar company={company} />
 
       {/* Main Content */}
       <div className="news-content">
-        <div className="content-header">
-          <p className="article-count">{articles.length} ESG News Articles</p>
+        <div className="page-header">
+          <h1 className="page-title">{company}</h1>
+          <div className="page-actions">
+            <button onClick={handleAnalyze} disabled={loading} className="action-btn analyze-btn">
+              {loading ? '🔄 Analyzing...' : '🚀 Analyze'}
+            </button>
+          </div>
         </div>
+        <p className="article-count">{articles.length} ESG News Articles</p>
 
         {loading ? (
           <div className="loading-state">

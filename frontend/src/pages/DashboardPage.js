@@ -5,6 +5,7 @@ import {
   LineChart, Line, BarChart, Bar, PieChart, Pie, Cell,
   XAxis, YAxis, CartesianGrid, Tooltip, Legend, ResponsiveContainer
 } from 'recharts';
+import Sidebar from '../components/Sidebar';
 import './DashboardPage.css';
 
 const COLORS = {
@@ -121,15 +122,12 @@ function DashboardPage() {
 
   return (
     <div className="dashboard-page">
-      {/* Top Navigation */}
-      <nav className="top-nav">
-        <button onClick={() => navigate('/')} className="nav-btn back-btn">
-          ← Home
-        </button>
-        <h1 className="company-title">{company} Dashboard</h1>
-      </nav>
+      <Sidebar company={company} />
 
       <div className="dashboard-content">
+        <div className="page-header">
+          <h1 className="page-title">{company} Dashboard</h1>
+        </div>
         {/* Overview Cards */}
         {overview && (
           <div className="stats-grid">
