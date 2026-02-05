@@ -5,6 +5,7 @@ const connectDB = require('./config/database');
 const newsRoutes = require('./routes/newsRoutes');
 const sentimentRoutes = require('./routes/sentimentRoutes');
 const esgRoutes = require('./routes/esgRoutes');
+const analyticsRoutes = require('./routes/analyticsRoutes');
 
 // Load environment variables
 dotenv.config();
@@ -24,6 +25,7 @@ app.use(express.urlencoded({ extended: true }));
 app.use('/api/news', newsRoutes);
 app.use('/api/sentiment', sentimentRoutes);
 app.use('/api/esg', esgRoutes);
+app.use('/api/analytics', analyticsRoutes);
 
 // Health check route
 app.get('/api/health', (req, res) => {

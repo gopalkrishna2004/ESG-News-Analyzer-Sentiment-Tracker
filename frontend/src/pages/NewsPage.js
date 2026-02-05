@@ -1,8 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { useLocation, useNavigate } from 'react-router-dom';
 import axios from 'axios';
-import NewsList from '../components/NewsList';
-import UnifiedAnalyzer from '../components/UnifiedAnalyzer';
+import NewsCard from '../components/NewsCard';
 import './NewsPage.css';
 
 function NewsPage() {
@@ -17,30 +16,30 @@ function NewsPage() {
       setCompany(location.state.company);
       setArticles(location.state.articles || []);
     } else {
-      // No state, redirect to home
       navigate('/');
     }
   }, [location, navigate]);
 
-  const handleAnalysisComplete = async () => {
-    // Refresh articles to show updated sentiment and ESG categories
-    if (company) {
-      setLoading(true);
-      try {
-        const response = await axios.get(`/api/news/company/${encodeURIComponent(company)}`);
-        if (response.data.success) {
-          setArticles(response.data.articles);
-        }
-      } catch (error) {
-        console.error('Failed to refresh articles:', error);
-      } finally {
-        setLoading(false);
-      }
-    }
-  };
+  const handleAnalyze = async () => {
+    if (!company) return;
 
-  const handleBackToSearch = () => {
-    navigate('/');
+    setLoading(true);
+    try {
+      await Promise.all([
+        axios.post(`/api/sentiment/analyze-company/${encodeURIComponent(company)}`),
+        axios.post(`/api/esg/categorize-company/${encodeURIComponent(company)}`)
+      ]);
+      
+      // Refresh articles
+      const response = await axios.get(`/api/news/company/${encodeURIComponent(company)}`);
+      if (response.data.success) {
+        setArticles(response.data.articles);
+      }
+    } catch (error) {
+      console.error('Analysis error:', error);
+    } finally {
+      setLoading(false);
+    }
   };
 
   if (!company) {
@@ -49,22 +48,41 @@ function NewsPage() {
 
   return (
     <div className="news-page">
-      <div className="news-header">
-        <button onClick={handleBackToSearch} className="back-button">
-          ← Back to Search
+      {/* Top Navigation Bar */}
+      <nav className="top-nav">
+        <button onClick={() => navigate('/')} className="nav-btn back-btn">
+          ← Home
         </button>
-        <h2>📰 ESG News for {company}</h2>
-        <UnifiedAnalyzer company={company} onAnalysisComplete={handleAnalysisComplete} />
-      </div>
-
-      {loading ? (
-        <div className="loading-container">
-          <div className="loading-spinner"></div>
-          <p>Refreshing articles...</p>
+        <h1 className="company-title">{company}</h1>
+        <div className="nav-actions">
+          <button onClick={handleAnalyze} disabled={loading} className="nav-btn analyze-btn">
+            {loading ? '🔄 Analyzing...' : '🚀 Analyze'}
+          </button>
+          <button onClick={() => navigate('/dashboard', { state: { company } })} className="nav-btn dashboard-btn">
+            📊 Dashboard
+          </button>
         </div>
-      ) : (
-        <NewsList articles={articles} company={company} />
-      )}
+      </nav>
+
+      {/* Main Content */}
+      <div className="news-content">
+        <div className="content-header">
+          <p className="article-count">{articles.length} ESG News Articles</p>
+        </div>
+
+        {loading ? (
+          <div className="loading-state">
+            <div className="spinner"></div>
+            <p>Refreshing articles...</p>
+          </div>
+        ) : (
+          <div className="articles-grid">
+            {articles.map((article, index) => (
+              <NewsCard key={article._id || article.url || index} article={article} />
+            ))}
+          </div>
+        )}
+      </div>
     </div>
   );
 }

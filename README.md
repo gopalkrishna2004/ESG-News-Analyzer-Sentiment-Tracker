@@ -18,22 +18,31 @@ A full-stack web application that aggregates ESG (Environmental, Social, Governa
 - 🤖 **Sentiment Analysis** - BERT AI: Positive/Negative/Neutral
 - 🏷️ **ESG Categorization** - Gemini AI: Environmental/Social/Governance
 - ⏱️ **Fast Processing** - Both analyses run simultaneously (~20-30 seconds)
-- 📊 **Real-time Progress** - Visual tracking of analysis steps
 - 🎨 **Color-coded Badges** - ✅❌➖ (sentiment) + 🌍👥⚖️ (ESG)
 - 📦 **Batch Processing** - 10 articles at a time
 
+### Feature 4: Trend Dashboard & Visualizations ✅
+**Beautiful Analytics Dashboard with Recharts**
+- 📈 **Sentiment Trends** - Line chart showing sentiment changes over time
+- 🥧 **ESG Distribution** - Pie chart with percentage breakdown
+- 📊 **Category Comparison** - Bar chart comparing E/S/G counts
+- 📅 **Timeline View** - Chronological list of ESG events with badges
+- 📱 **Responsive Design** - Works perfectly on desktop, tablet, and mobile
+- 🎨 **Modern UI** - Gradient backgrounds, smooth animations, hover effects
+- 📊 **Overview Cards** - Quick stats for total articles and sentiment breakdown
+
 ### Coming Soon 🔜
-- Trend Dashboard & Visualizations
 - AI Summary Generation
 - Alerts & Notifications
+- Export Reports
 
 ## 🛠️ Tech Stack
 
 **Frontend:**
-- React.js
+- React.js with React Router
 - Axios for API calls
-- Chart.js for visualizations (upcoming)
-- Responsive CSS
+- Recharts for beautiful visualizations
+- Responsive CSS with gradients and animations
 
 **Backend:**
 - Node.js
@@ -233,7 +242,10 @@ _(Screenshots will be added after implementation)_
 - [x] Responsive UI design
 - [x] Sentiment analysis with Hugging Face (BERT)
 - [x] ESG categorization with Gemini API
-- [ ] Dashboard with Chart.js
+- [x] Multi-page navigation with React Router
+- [x] Dashboard with Recharts (Line, Pie, Bar charts)
+- [x] Timeline view of ESG events
+- [x] Analytics API endpoints
 - [ ] AI summary generation
 - [ ] Email alerts system
 
