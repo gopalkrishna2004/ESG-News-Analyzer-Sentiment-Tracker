@@ -13,7 +13,7 @@ function HomePage() {
   return (
     <div className="home-page">
       <div className="home-header">
-        <h1>📊 ESG News Analyzer</h1>
+        <h1>ESG News Analyzer</h1>
         <p className="subtitle">Track Environmental, Social & Governance News</p>
       </div>
 

@@ -71,7 +71,7 @@ function CompanySearch({ onSearchSuccess }) {
   return (
     <div className="company-search">
       <div className="search-card">
-        <h2>🔍 Search Company ESG News</h2>
+        <h2>Search Company ESG News</h2>
         
         <form onSubmit={handleSearch} className="search-form">
           <div className="input-group">
@@ -84,7 +84,7 @@ function CompanySearch({ onSearchSuccess }) {
               disabled={loading}
             />
             <button type="submit" className="search-button" disabled={loading}>
-              {loading ? '🔄 Searching...' : 'Search'}
+              {loading ? 'Searching...' : 'Search'}
             </button>
           </div>
 
@@ -114,7 +114,7 @@ function CompanySearch({ onSearchSuccess }) {
 
         {error && (
           <div className="search-error">
-            ⚠️ {error}
+            {error}
           </div>
         )}
 
